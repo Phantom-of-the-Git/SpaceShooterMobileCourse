@@ -1,0 +1,66 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+public class PlayerControls : MonoBehaviour
+{
+    private Camera mainCam;
+    private Vector3 offset;
+
+    private float maxLeft;
+    private float maxRight;
+    private float maxDown;
+    private float maxUp;
+    void Start()
+    {
+        mainCam = Camera.main;
+        StartCoroutine(SetBoundaries());
+    }
+    void Update()
+    {
+        if (Touch.fingers[0].isActive)
+        {
+            Touch myTouch = Touch.activeTouches[0];
+            Vector3 touchPos = myTouch.screenPosition;
+            touchPos = mainCam.ScreenToWorldPoint(touchPos);
+
+            if (Touch.activeTouches[0].phase == TouchPhase.Began)
+            {
+                offset = touchPos - transform.position;
+            }
+            if(Touch.activeTouches[0].phase == TouchPhase.Moved)
+            {
+                transform.position = new Vector3(touchPos.x - offset.x, touchPos.y - offset.y, 0);
+            }
+            if (Touch.activeTouches[0].phase == TouchPhase.Stationary)
+            {
+                transform.position = new Vector3(touchPos.x - offset.x, touchPos.y - offset.y, 0);
+            }
+            //Clamp the player movement by using boundaries previously set
+            transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x, maxLeft, maxRight),
+                Mathf.Clamp(transform.position.y, maxDown, maxUp),
+                0);
+        }
+    }
+    private void OnEnable()
+    {
+        EnhancedTouchSupport.Enable();
+    }
+    private void OnDisable()
+    {
+        EnhancedTouchSupport.Disable();
+    }
+
+    private IEnumerator SetBoundaries()
+    {
+        yield return new WaitForSeconds(0.4f);
+        //Set boundaries of the movement for player through camera view point (0,0) to (1,1)
+        maxLeft = mainCam.ViewportToWorldPoint(new Vector2(0.15f, 0)).x;
+        maxRight = mainCam.ViewportToWorldPoint(new Vector2(0.85f, 0)).x;
+
+        maxDown = mainCam.ViewportToWorldPoint(new Vector2(0, 0.1f)).y;
+        maxUp = mainCam.ViewportToWorldPoint(new Vector2(0, 0.6f)).y;
+    }
+}
