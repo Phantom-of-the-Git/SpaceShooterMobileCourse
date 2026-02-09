@@ -21,7 +21,7 @@ public class Meteor : Enemy
     }
     public override void DeathSequence()
     {
-        base.DeathSequence();
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
