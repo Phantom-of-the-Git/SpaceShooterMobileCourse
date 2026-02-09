@@ -171,5 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Meteor
   health: 0
   rb: {fileID: 9207343631462335559}
-  minSpeed: 5
-  maxSpeed: 15
+  minSpeed: 6
+  maxSpeed: 12
+  rotateSpeed: 90

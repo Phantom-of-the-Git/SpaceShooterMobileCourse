@@ -4,6 +4,7 @@ public class Meteor : Enemy
 {
     [SerializeField] private float minSpeed;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float rotateSpeed;
     private float speed;
     void Start()
     {
@@ -12,6 +13,7 @@ public class Meteor : Enemy
     }
     void Update()
     {
+        transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
     }
     public override void HurtSequence()
     {
@@ -27,5 +29,9 @@ public class Meteor : Enemy
         {
             Destroy(collision.gameObject);
         }
+    }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
