@@ -1612,6 +1612,7 @@ GameObject:
   - component: {fileID: 1596190065}
   - component: {fileID: 1596190068}
   - component: {fileID: 1596190069}
+  - component: {fileID: 1596190070}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1838,8 +1839,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6928ca5a964410440838fa1e461f99da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  anim: {fileID: 1596190070}
   maxHealth: 3
   healthFill: {fileID: 1068119862}
+  explosionPrefab: {fileID: 6540900823470561796, guid: aeac8d247fabb6f45a6803cf2b519c33, type: 3}
+--- !u!95 &1596190070
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596190062}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8480dc293ea2f874ba14a15bc5be4d68, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1713759334
 GameObject:
   m_ObjectHideFlags: 0
