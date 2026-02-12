@@ -644,8 +644,8 @@ TextureImporter:
       name: Explosion_128_8
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1
+        x: 0
+        y: 0
         width: 128
         height: 128
       alignment: 0
@@ -658,6 +658,28 @@ TextureImporter:
       bones: []
       spriteID: 8c49865d8a9a64770800000000000000
       internalID: 8594743481483171016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_128_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: badb396e22b97674fad4ce96cf77f708
+      internalID: 333218866
       vertices: []
       indices: 
       edges: []
@@ -779,6 +801,7 @@ TextureImporter:
       Explosion_128_87: 1458919651906479873
       Explosion_128_88: 736418401103669746
       Explosion_128_89: -7458733913741413069
+      Explosion_128_9: 333218866
       Explosion_128_90: -6870163624848626640
       Explosion_128_91: -5261620782060313378
       Explosion_128_92: 83714889854038271
