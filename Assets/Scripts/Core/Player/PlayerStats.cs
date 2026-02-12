@@ -9,7 +9,6 @@ public class PlayerStats : MonoBehaviour
     private float health;
     [SerializeField] private Image healthFill;
     [SerializeField] private GameObject explosionPrefab;
-    private bool canPlayAnim;
     private void Start()
     {
         health = maxHealth;
@@ -19,21 +18,11 @@ public class PlayerStats : MonoBehaviour
     {
         health -= damage;
         healthFill.fillAmount = health / maxHealth;
-        if (canPlayAnim)
-        {
-            anim.SetTrigger("Damage");
-            StartCoroutine(AntiSpamAnimation());
-        }
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("Dmg")) return;
+        anim.SetTrigger("Damage");
         if (health <= 0)
         {
             Instantiate(explosionPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
-    }
-    private IEnumerator AntiSpamAnimation()
-    {
-        canPlayAnim = false;
-        yield return new WaitForSeconds(0.15f);
-        canPlayAnim = true;
-    }
-}
+    }}
